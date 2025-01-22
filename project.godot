@@ -14,6 +14,11 @@ config/name="Endless 2D Platfomer"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+
 [rendering]
 
 renderer/rendering_method="mobile"
