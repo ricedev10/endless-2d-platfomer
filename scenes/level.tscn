@@ -1,14 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfsi8wdankcxg"]
+[gd_scene load_steps=6 format=4 uid="uid://bfsi8wdankcxg"]
 
+[ext_resource type="Texture2D" uid="uid://x435u4q8o8i4" path="res://assets/TileSet.svg" id="1_44lvs"]
 [ext_resource type="PackedScene" uid="uid://dv0juqi60dd2m" path="res://scenes/player.tscn" id="1_bbude"]
+[ext_resource type="PackedScene" uid="uid://bxn1d5e5xikq5" path="res://scenes/solid_shape_1.tscn" id="3_opxwo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4ans"]
+texture = ExtResource("1_44lvs")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, -32, 32, 32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, 32, 32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 32, 0)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, -32, 32, 32, 32, 32, -32)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 32, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 16, -32, 32, 32, 32, 32, 0)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, -32, 32, 32, 32, 32, -16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, -32, 32, 32, 32, 32, -32)
+
+[sub_resource type="TileSet" id="TileSet_rem6m"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/0 = SubResource("TileSetAtlasSource_u4ans")
 
 [node name="level" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD6/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rem6m")
 
 [node name="Player" parent="." instance=ExtResource("1_bbude")]
-position = Vector2(-378, -222)
+position = Vector2(107, -418)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(378, 222)
 position_smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="SolidShape1" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("3_opxwo")]
+modulate = Color(0.41598, 0.41598, 0.41598, 1)
+position = Vector2(-462, -410)
+scale = Vector2(0.509052, 0.487224)
+
+[node name="SolidShape2" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("3_opxwo")]
+modulate = Color(0.41598, 0.41598, 0.41598, 1)
+position = Vector2(432, -281)
+scale = Vector2(0.509052, 0.487224)
+
+[node name="SolidShape3" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("3_opxwo")]
+modulate = Color(0.41598, 0.41598, 0.41598, 1)
+position = Vector2(1365, -746)
+scale = Vector2(0.509052, 0.487224)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="SolidShape1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("3_opxwo")]
+position = Vector2(-938, -90)
+
+[node name="SolidShape2" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("3_opxwo")]
+position = Vector2(163, -1148)
+
+[node name="SolidShape3" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource("3_opxwo")]
+position = Vector2(1518, -137)

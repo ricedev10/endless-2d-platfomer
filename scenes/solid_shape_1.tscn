@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxn1d5e5xikq5"]
+
+[ext_resource type="Texture2D" uid="uid://dr30w7jd43egt" path="res://assets/Fill.svg" id="1_rsk0p"]
+
+[node name="SolidShape1" type="StaticBody2D"]
+
+[node name="Polygon" type="Polygon2D" parent="."]
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+position = Vector2(-821, -573)
+scale = Vector2(100, 100)
+texture = ExtResource("1_rsk0p")
+polygon = PackedVector2Array(3.02379, 2.16564, 7.39446, 1.66282, 12.5387, 2.57821, 13.8538, 5.45331, 13.2736, 11.6677, 8.87714, 13.3437, 3.13983, 11.5903, 1.45087, 5.84009)
+uv = PackedVector2Array(3.02379, 2.16564, 7.39446, 1.66282, 12.5387, 2.57821, 13.8538, 5.45331, 13.2736, 11.6677, 8.87714, 13.3437, 3.13983, 11.5903, 1.45087, 5.84009)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-82, -407, 433, -315, 565, -27, 506, 594, 67, 761, -507, 586, -676, 11, -519, -356)
+disabled = true

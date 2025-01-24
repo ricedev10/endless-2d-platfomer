@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect width="1024" height="1024" fill="#D3D3D3" fill-rule="evenodd" fill-opacity="0" />
+    <rect id="Rectangle" width="64" height="64" fill="#FFFFFF" fill-rule="evenodd" />
+    <path id="Rectangle" d="M0.229492 64L128 0L128 64L0 64L0.229492 64Z" fill="#FFFFFF" fill-rule="evenodd" transform="translate(128 0)" />
+    <path id="Rectangle" d="M0.458984 64L256 0L256 64L0 64L0.458984 64Z" fill="#FFFFFF" fill-rule="evenodd" transform="translate(256 0)" />
+    <path id="Rectangle" d="M64 0L64 0L64 64L0 64L64 0Z" fill="#FFFFFF" fill-rule="evenodd" transform="translate(64 0)" />
+  </g>
+</svg>
