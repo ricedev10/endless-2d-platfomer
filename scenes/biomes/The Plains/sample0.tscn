@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=4 uid="uid://x5p588sne7ti"]
+
+[ext_resource type="PackedScene" uid="uid://dbt5pukp7kt1g" path="res://scenes/biomes/level_template.tscn" id="1_akbff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0q216"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vut5l"]
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 2.5, 1.2),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMABQAAAAQABQABAAAAAQACAAAAAQADAAIACAAOAAwACAAKAA4ACwAOAAoACwAPAA4ADwAMAA4ADwANAAwADQALAAkADQAPAAsADQAIAAwADQAJAAgACQAKAAgACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("///1KAAAAAD//wAAAAAAAP//9Sj//wAA//8AAP//AAAAAPUoAAAAAAAAAAAAAAAAAAD1KP//AAAAAAAA//8AAP+///8AAAAA/7/gegAAAAD/v/////8AAP+/4Hr//wAA/z///wAAAAD/P+B6AAAAAP8//////wAA/z/gev//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pd42v"]
+resource_name = "GameRunPaths_Cube_003"
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 2.5, 1.2),
+"attribute_data": PackedByteArray("/5//f/+f/3//n/9//1//f/9f/3//X/9//5//P/+f/z//n/8//1//P/9f/z//X/8//5//v//f/3//n/+//1//v/8f/3//X/+//58AAP/f/z//n////18AAP8f/z//X////5//f/+f/3//n/9//1//f/9f/3//X/9//5//P/+f/z//n/8//1//P/9f/z//X/8//5//v//f/3//n/+//1//v/8f/3//X/+//58AAP/f/z//n////18AAP8f/z//X///"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoADwAAAAwADwADAAAABQAIAAIABQALAAgAGQArACUAGQAfACsAIQAqAB4AIQAtACoALwAmACwALwApACYAKAAiABwAKAAuACIAJwAYACQAJwAbABgAHQAgABoAHQAjACAA"),
+"material": SubResource("StandardMaterial3D_0q216"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("///1KAAA//////UoAAD/////9SgAAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV///1KP///7////Uo////////9Sj//1TV//8AAP///7///wAA////v///AAD//1TVAAD1KAAA//8AAPUoAAD//wAA9SgAAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD1KP///78AAPUo/////wAA9Sj//1TVAAAAAP///78AAAAA////vwAAAAD//1TV/7///wAA////v///AAD///+///8AAFTV/7/gegAA////v+B6AAD/v/+/4HoAAFTV/7///////7//v/////////+//////1TV/7/gev///7//v+B6////v/+/4Hr//1TV/z///wAA////P///AAD///8///8AAFTV/z/gegAA////P+B6AAD/v/8/4HoAAFTV/z///////7//P/////////8//////1TV/z/gev///7//P+B6////v/8/4Hr//1TV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vut5l")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tl8ly"]
+data = PackedVector3Array(2, -0.5, -0.6, -2, -0.5, 0.6, -2, -0.5, -0.6, 2, -0.5, -0.6, 2, -0.5, 0.6, -2, -0.5, 0.6, 2, -0.9, 0.6, -2, -0.5, 0.6, 2, -0.5, 0.6, 2, -0.9, 0.6, -2, -0.9, 0.6, -2, -0.5, 0.6, -2, -0.9, 0.6, -2, -0.5, -0.6, -2, -0.5, 0.6, -2, -0.9, 0.6, -2, -0.9, -0.6, -2, -0.5, -0.6, -2, -0.9, -0.6, 2, -0.9, 0.6, 2, -0.9, -0.6, -2, -0.9, -0.6, -2, -0.9, 0.6, 2, -0.9, 0.6, -2, -0.9, -0.6, 2, -0.5, -0.6, -2, -0.5, -0.6, -2, -0.9, -0.6, 2, -0.9, -0.6, 2, -0.5, -0.6, 2, -0.9, -0.6, 2, -0.5, 0.6, 2, -0.5, -0.6, 2, -0.9, -0.6, 2, -0.9, 0.6, 2, -0.5, 0.6, 1, 1.6, -0.6, -1, 1.6, 0.6, -1, 1.6, -0.6, 1, 1.6, -0.6, 1, 1.6, 0.6, -1, 1.6, 0.6, 1, 0.3, 0.6, -1, 1.6, 0.6, 1, 1.6, 0.6, 1, 0.3, 0.6, -1, 0.3, 0.6, -1, 1.6, 0.6, -1, 0.3, 0.6, -1, 1.6, -0.6, -1, 1.6, 0.6, -1, 0.3, 0.6, -1, 0.3, -0.6, -1, 1.6, -0.6, -1, 0.3, -0.6, 1, 0.3, 0.6, 1, 0.3, -0.6, -1, 0.3, -0.6, -1, 0.3, 0.6, 1, 0.3, 0.6, -1, 0.3, -0.6, 1, 1.6, -0.6, -1, 1.6, -0.6, -1, 0.3, -0.6, 1, 0.3, -0.6, 1, 1.6, -0.6, 1, 0.3, -0.6, 1, 1.6, 0.6, 1, 1.6, -0.6, 1, 0.3, -0.6, 1, 0.3, 0.6, 1, 1.6, 0.6)
+
+[node name="level_template" instance=ExtResource("1_akbff")]
+
+[node name="Start" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+
+[node name="End" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
+
+[node name="Cube_003" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("ArrayMesh_pd42v")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_003" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_003/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_tl8ly")

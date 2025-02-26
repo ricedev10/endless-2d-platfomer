@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=4 uid="uid://bgdtc2fxsal63"]
+
+[ext_resource type="PackedScene" uid="uid://dbt5pukp7kt1g" path="res://scenes/biomes/level_template.tscn" id="1_emlr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gglrq"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5aihx"]
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 0.9, 1.2),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAAAKAAIAAAAIAAoABQAAAAQABQABAAAACQAKAAgACQALAAoAAgALAAMAAgAKAAsAAQAIAAAAAQAJAAgAAwAJAAEAAwALAAkA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3/GcQAAAAD/fwAAAAAAAP9/xnH//wAA/38AAP//AAAAAP//AAAAAAAAOI4AAAAAAAD/////AAAAADiO//8AAP//xnEAAAAA//8AAAAAAAD//8Zx//8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bo5mw"]
+resource_name = "GameRunPaths_Cube_001"
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 0.9, 1.2),
+"attribute_data": PackedByteArray("/5//f/+f/3//n/9//1//f/9f/3//X/9//5//P/+f/z//n/8//1//P/9f/z//X/8//5//v//f/3//n/+//1//v/8f/3//X/+//58AAP/f/z//n////18AAP8f/z//X////5//f/+f/3//n/9//1//f/9f/3//X/9//5//P/+f/z//n/8//1//P/9f/z//X/8/"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AgATAA0AAgAIABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAALAAUAEAAWAAsAAQAfAAcAAQAZAB8ADwAAAAwADwADAAAAHQAgABoAHQAjACAABgAhAAkABgAeACEAAwAYAAAAAwAbABgACgAcAAQACgAiABwA"),
+"material": SubResource("StandardMaterial3D_gglrq"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("/3/GcQAA////f8ZxAAD/v/9/xnEAAPL4/38AAAAA////fwAAAAD/v/9/AAAAAJrA/3/Gcf///7//f8Zx////v/9/xnH///L4/38AAP///7//fwAA////v/9/AAD//5rAAAD//wAA//8AAP//AADy+AAA//8AAFTVAAA4jgAA//8AADiOAACawAAAOI4AAFTVAAD//////78AAP/////y+AAA/////1TVAAA4jv///78AADiO//+awAAAOI7//1TV///GcQAA/////8ZxAAD/v///xnEAAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV///Gcf///n///8Zx////v///xnH//1TV//8AAP///n///wAA////v///AAD//1TV/7//v////39JPGsH/7//vwAA/39JGaSM/////////39JPGsH/////wAA/39JGaSM/7//v0k8awdU1VTV/7//v0kZpIxU1VTV/////0k8awdU1VTV/////0kZpIxU1VTV////f////3+qKqoq////fwAA/3+qKqoq/3///////3+qKqoq/3///wAA/3+qKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5aihx")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bvsw8"]
+data = PackedVector3Array(0, -0.5, -0.6, -2, 0, 0.6, -2, 0, -0.6, 0, -0.5, -0.6, 0, -0.5, 0.6, -2, 0, 0.6, 0, -0.9, 0.6, -2, 0, 0.6, 0, -0.5, 0.6, 0, -0.9, 0.6, -2, -0.4, 0.6, -2, 0, 0.6, -2, -0.4, 0.6, -2, 0, -0.6, -2, 0, 0.6, -2, -0.4, 0.6, -2, -0.4, -0.6, -2, 0, -0.6, -2, -0.4, -0.6, 0, -0.9, 0.6, 0, -0.9, -0.6, -2, -0.4, -0.6, -2, -0.4, 0.6, 0, -0.9, 0.6, 0, -0.5, -0.6, 2, -0.5, 0.6, 0, -0.5, 0.6, 0, -0.5, -0.6, 2, -0.5, -0.6, 2, -0.5, 0.6, -2, -0.4, -0.6, 0, -0.5, -0.6, -2, 0, -0.6, -2, -0.4, -0.6, 0, -0.9, -0.6, 0, -0.5, -0.6, 2, -0.9, -0.6, 2, -0.5, 0.6, 2, -0.5, -0.6, 2, -0.9, -0.6, 2, -0.9, 0.6, 2, -0.5, 0.6, 0, -0.5, 0.6, 2, -0.9, 0.6, 0, -0.9, 0.6, 0, -0.5, 0.6, 2, -0.5, 0.6, 2, -0.9, 0.6, 0, -0.9, -0.6, 2, -0.5, -0.6, 0, -0.5, -0.6, 0, -0.9, -0.6, 2, -0.9, -0.6, 2, -0.5, -0.6, 0, -0.9, 0.6, 2, -0.9, -0.6, 0, -0.9, -0.6, 0, -0.9, 0.6, 2, -0.9, 0.6, 2, -0.9, -0.6)
+
+[node name="level_template" instance=ExtResource("1_emlr2")]
+
+[node name="Start" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="End" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
+
+[node name="Cube_001" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("ArrayMesh_bo5mw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_bvsw8")

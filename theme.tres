@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://ocidsdxya7py"]
+
+[resource]
+default_font_size = 32
+Button/font_sizes/font_size = 32
+HeaderLarge/font_sizes/font_size = 64
+HeaderMedium/font_sizes/font_size = 48
+HeaderSmall/font_sizes/font_size = 28
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+VBoxContainer/constants/separation = 8

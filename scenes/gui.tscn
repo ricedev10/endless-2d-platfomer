@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://di8bbu7eu7g3j"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f0nxw"]
+[ext_resource type="Theme" uid="uid://ocidsdxya7py" path="res://theme.tres" id="1_gt518"]
+[ext_resource type="PackedScene" uid="uid://du1tw46uon663" path="res://scenes/loading_menu.tscn" id="2_lchfl"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f0nxw")
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleLabel" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -431.0
+offset_right = 224.5
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_gt518")
+theme_type_variation = &"HeaderLarge"
+text = "Untitled Game"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -48.0
+offset_right = 188.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Host Game"
+
+[node name="Join" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Join"
+
+[node name="Quit" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Quit"
+
+[node name="LoadingMenu" parent="." instance=ExtResource("2_lchfl")]
+visible = false
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="MainMenu" method="host_game"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Join" to="MainMenu" method="join_game"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Quit" to="MainMenu" method="quit_game"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbt5pukp7kt1g"]
+
+[ext_resource type="Script" path="res://scripts/level_template.gd" id="1_sbamm"]
+
+[node name="level_template" type="Node3D" node_paths=PackedStringArray("start_marker", "end_marker")]
+script = ExtResource("1_sbamm")
+start_marker = NodePath("Start")
+end_marker = NodePath("End")
+
+[node name="Start" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+gizmo_extents = 1.0
+
+[node name="End" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+gizmo_extents = 1.0

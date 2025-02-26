@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=4 uid="uid://ct1a3vpm8gys0"]
+
+[ext_resource type="PackedScene" uid="uid://dbt5pukp7kt1g" path="res://scenes/biomes/level_template.tscn" id="1_jhdex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6rnq"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qqewk"]
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 0.9, 1.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AQAHAAUAAQADAAcAAgAEAAYAAgAAAAQAAwAAAAIAAwABAAAAAwAGAAcAAwACAAYABQAGAAQABQAHAAYAAAAFAAQAAAABAAUA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAAAADiOAAAAAAAA/////wAAAAA4jv//AAD//8ZxAAAAAP//AAAAAAAA///Gcf//AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_v32fj"]
+resource_name = "GameRunPaths_Cube_002"
+_surfaces = [{
+"aabb": AABB(-2, -0.9, -0.6, 4, 0.9, 1.2),
+"attribute_data": PackedByteArray("/5//v//f/3//n/+//1//v/8f/3//X/+//58AAP/f/z//n////18AAP8f/z//X////5//f/+f/3//n/9//1//f/9f/3//X/9//5//P/+f/z//n/8//1//P/9f/z//X/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("BAAXABEABAAKABcABwANABMABwABAA0ACwACAAgACwAFAAIACQASABUACQAGABIAEAAUAA4AEAAWABQAAAAPAAwAAAADAA8A"),
+"material": SubResource("StandardMaterial3D_i6rnq"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA//8AAP//AABq/AAA//8AAFTVAAA4jgAA//8AADiOAAAnwAAAOI4AAFTVAAD//////78AAP////9q/AAA/////1TVAAA4jv///78AADiO//8nwAAAOI7//1TV///GcQAA/////8ZxAABq/P//xnEAAFTV//8AAAAA/////wAAAABU1f//AAAAACfA///Gcf///7///8Zx//9q/P//xnH//1TV//8AAP///7///wAA//9U1f//AAD//yfA/7//vxE+3ANU1VTV/7//vysOFYdU1VTV/////xE+3ANU1VTV/////ysOFYdU1VTV/7//vxE+3AOqKqoq/7//v6oqqiorDhWH/////xE+3AOqKqoq/////6oqqiorDhWH")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qqewk")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_52b66"]
+data = PackedVector3Array(-2, -0.4, -0.6, 2, -0.9, 0.6, 2, -0.9, -0.6, -2, -0.4, -0.6, -2, -0.4, 0.6, 2, -0.9, 0.6, -2, 0, 0.6, 2, -0.5, -0.6, 2, -0.5, 0.6, -2, 0, 0.6, -2, 0, -0.6, 2, -0.5, -0.6, -2, -0.4, 0.6, -2, 0, -0.6, -2, 0, 0.6, -2, -0.4, 0.6, -2, -0.4, -0.6, -2, 0, -0.6, -2, -0.4, 0.6, 2, -0.5, 0.6, 2, -0.9, 0.6, -2, -0.4, 0.6, -2, 0, 0.6, 2, -0.5, 0.6, 2, -0.9, -0.6, 2, -0.5, 0.6, 2, -0.5, -0.6, 2, -0.9, -0.6, 2, -0.9, 0.6, 2, -0.5, 0.6, -2, 0, -0.6, 2, -0.9, -0.6, 2, -0.5, -0.6, -2, 0, -0.6, -2, -0.4, -0.6, 2, -0.9, -0.6)
+
+[node name="level_template" instance=ExtResource("1_jhdex")]
+
+[node name="Start" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="End" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
+
+[node name="Cube_002" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("ArrayMesh_v32fj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_002" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_002/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_52b66")

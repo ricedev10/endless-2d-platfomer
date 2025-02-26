@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dd7ea8px78xy1"]
 
 [ext_resource type="Texture2D" uid="uid://lhvbln2oyubk" path="res://assets/animations/idle/Idle0.png" id="1_rkvql"]
-[ext_resource type="Script" path="res://code/player_3d.gd" id="1_t2mn7"]
+[ext_resource type="Script" path="res://scripts/player_3d.gd" id="1_t2mn7"]
 [ext_resource type="Texture2D" uid="uid://1l01rjjbla7w" path="res://assets/animations/crouch/Crouch0.png" id="2_d345y"]
 [ext_resource type="Texture2D" uid="uid://crswwvpefe2oe" path="res://assets/animations/idle/Idle1.png" id="2_gw6pa"]
 [ext_resource type="Texture2D" uid="uid://s5l2xsq3tkd5" path="res://assets/animations/run/Run0.png" id="3_frgfs"]
@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ka107afufpff" path="res://assets/animations/jump/Jump1.png" id="5_1bgae"]
 [ext_resource type="Texture2D" uid="uid://bquxxffp17tj3" path="res://assets/animations/run/Run2.png" id="5_dh04h"]
 [ext_resource type="Texture2D" uid="uid://bodi2omdmllnr" path="res://assets/animations/run/Run3.png" id="6_v6ump"]
-[ext_resource type="Texture2D" uid="uid://ckmj3grycs478" path="res://assets/animations/slide/Slide0.png" id="12_fy70q"]
-[ext_resource type="Script" path="res://code/state.gd" id="13_3cnmf"]
+[ext_resource type="Texture2D" uid="uid://d1qhcat4sftxc" path="res://assets/animations/slide/Slide0.png" id="12_fy70q"]
+[ext_resource type="Script" path="res://scripts/state.gd" id="13_3cnmf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8jqe"]
 animations = [{
@@ -79,7 +79,8 @@ animations = [{
 radius = 0.35
 height = 0.7
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 2
 script = ExtResource("1_t2mn7")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -87,7 +88,7 @@ transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0.710847, 0)
 double_sided = false
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_p8jqe")
-animation = &"run"
+animation = &"slide"
 autoplay = "idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -99,5 +100,5 @@ script = ExtResource("13_3cnmf")
 
 [node name="RoofDetector" type="RayCast3D" parent="."]
 editor_description = "Used for preventing player from getting jammed when crouching and then standing back up."
-target_position = Vector3(0, 0.9, 0)
+target_position = Vector3(0, 1.1, 0)
 debug_shape_thickness = 5

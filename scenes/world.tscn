@@ -1,22 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://blbgwl2er18ej"]
+[gd_scene load_steps=16 format=3 uid="uid://blbgwl2er18ej"]
 
-[ext_resource type="Script" path="res://code/camera_3d.gd" id="1_yrxan"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_e6siw"]
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_yrxan"]
 [ext_resource type="PackedScene" uid="uid://dd7ea8px78xy1" path="res://scenes/player3d.tscn" id="2_qb6lm"]
+[ext_resource type="PackedScene" uid="uid://x5p588sne7ti" path="res://scenes/biomes/The Plains/sample0.tscn" id="3_81c6g"]
+[ext_resource type="Script" path="res://scripts/biome.gd" id="4_csfsy"]
+[ext_resource type="PackedScene" uid="uid://c7mlk8rydl4a4" path="res://scenes/biomes/The Plains/sample1.tscn" id="4_h0s7c"]
+[ext_resource type="PackedScene" uid="uid://bdtuj2g1tms2b" path="res://scenes/biomes/The Plains/sample2.tscn" id="5_ftfxj"]
+[ext_resource type="PackedScene" uid="uid://bgdtc2fxsal63" path="res://scenes/biomes/The Plains/sample3.tscn" id="6_jakmr"]
+[ext_resource type="PackedScene" uid="uid://cml2orm63g8dt" path="res://scenes/biomes/The Plains/sample4.tscn" id="7_ei453"]
+[ext_resource type="PackedScene" uid="uid://cca8u7dmpk7mn" path="res://scenes/biomes/The Plains/sample5.tscn" id="8_1naaj"]
+[ext_resource type="PackedScene" uid="uid://ct1a3vpm8gys0" path="res://scenes/biomes/The Plains/sample6.tscn" id="9_aeilq"]
+[ext_resource type="PackedScene" uid="uid://c1footca4mcvt" path="res://scenes/biomes/The Plains/sample7.tscn" id="10_32u8w"]
+[ext_resource type="PackedScene" uid="uid://df1yg3huw2xgu" path="res://scenes/biomes/The Plains/sample8.tscn" id="11_2jqun"]
+[ext_resource type="PackedScene" uid="uid://di8bbu7eu7g3j" path="res://scenes/gui.tscn" id="14_he28u"]
+[ext_resource type="Script" path="res://scripts/networking.gd" id="15_u2rug"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_57eal"]
-size = Vector3(20, 1, 8)
+[node name="world" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_e6siw")
+player = NodePath("Player")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_50iwj"]
-size = Vector3(20, 1, 8)
+[node name="Biomes" type="Node" parent="."]
 
-[node name="world" type="Node3D"]
+[node name="The Plains" type="Node" parent="Biomes"]
+script = ExtResource("4_csfsy")
+levels = Array[PackedScene]([ExtResource("3_81c6g"), ExtResource("4_h0s7c"), ExtResource("5_ftfxj"), ExtResource("6_jakmr"), ExtResource("7_ei453"), ExtResource("8_1naaj"), ExtResource("9_aeilq"), ExtResource("10_32u8w"), ExtResource("11_2jqun")])
+biome_name = "The Plains"
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("follow")]
 transform = Transform3D(1, 0, 0, 0, 0.952065, 0.305895, 0, -0.305895, 0.952065, -0.0068622, 2.69574, 2.22465)
 current = true
-fov = 50.0
 script = ExtResource("1_yrxan")
-follow = NodePath("../CharacterBody3D/Marker3D")
+follow = NodePath("../Player/Marker3D")
 smoothing_interpolation = 0.05
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -30,161 +45,14 @@ directional_shadow_split_3 = 0.05
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(0.13057, 0, 0, 0, -0.574231, 0, 0, 0, 0.205315, 2.30165, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D2"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3703, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2853, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D2/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9503, -2.13951, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.5019, -0.83582, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.5683, -3.21191, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D7" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5167, 0.708557, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D8" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.346, 0.708557, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D10" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.771, 0.708557, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D11" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.386, 0.708557, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="StaticBody3D9" type="StaticBody3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.346, -1.65909, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_57eal")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_50iwj")
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_qb6lm")]
+[node name="Player" parent="." instance=ExtResource("2_qb6lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0177284, 1.31721, -0.0303962)
 
-[node name="Marker3D" type="Marker3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.971251, 0.238059, 0, -0.238059, 0.971251, 1, 1.5, 4.5)
+[node name="Marker3D" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.4, 5)
 gizmo_extents = 1.0
+
+[node name="GUI" parent="Player" instance=ExtResource("14_he28u")]
+
+[node name="Networking" type="Node" parent="."]
+script = ExtResource("15_u2rug")
