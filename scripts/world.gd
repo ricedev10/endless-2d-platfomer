@@ -103,14 +103,16 @@ class LevelLoader:
 var rng = RandomSeed.new()
 var level_loader: LevelLoader
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func initialize_level():
 	select_random_biome()
 	player.position = start_position + Vector3(0.0, 3.0, 0.0)
 	load_levels()
 	level_loader = LevelLoader.new(0, current_biome.levels.size()-1, 0, 40, current_biome)
 	level_loader.load_levels(self)
-	
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	initialize_level()
 	
 func select_random_biome() -> void:
 	var max_biomes = biomes.get_child_count()

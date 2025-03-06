@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://blbgwl2er18ej"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_e6siw"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_yrxan"]
+[ext_resource type="Script" uid="uid://0j8xtajg3l8r" path="res://scripts/world.gd" id="1_e6siw"]
+[ext_resource type="Script" uid="uid://dm3fk6x7chfc7" path="res://scripts/camera_3d.gd" id="1_yrxan"]
 [ext_resource type="PackedScene" uid="uid://dd7ea8px78xy1" path="res://scenes/player3d.tscn" id="2_qb6lm"]
 [ext_resource type="PackedScene" uid="uid://x5p588sne7ti" path="res://scenes/biomes/The Plains/sample0.tscn" id="3_81c6g"]
-[ext_resource type="Script" path="res://scripts/biome.gd" id="4_csfsy"]
+[ext_resource type="Script" uid="uid://d0kjq74tuuaqb" path="res://scripts/biome.gd" id="4_csfsy"]
 [ext_resource type="PackedScene" uid="uid://c7mlk8rydl4a4" path="res://scenes/biomes/The Plains/sample1.tscn" id="4_h0s7c"]
 [ext_resource type="PackedScene" uid="uid://bdtuj2g1tms2b" path="res://scenes/biomes/The Plains/sample2.tscn" id="5_ftfxj"]
 [ext_resource type="PackedScene" uid="uid://bgdtc2fxsal63" path="res://scenes/biomes/The Plains/sample3.tscn" id="6_jakmr"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1footca4mcvt" path="res://scenes/biomes/The Plains/sample7.tscn" id="10_32u8w"]
 [ext_resource type="PackedScene" uid="uid://df1yg3huw2xgu" path="res://scenes/biomes/The Plains/sample8.tscn" id="11_2jqun"]
 [ext_resource type="PackedScene" uid="uid://di8bbu7eu7g3j" path="res://scenes/gui.tscn" id="14_he28u"]
-[ext_resource type="Script" path="res://scripts/networking.gd" id="15_u2rug"]
+[ext_resource type="Script" uid="uid://bffnqjyjgq53y" path="res://scripts/networking.gd" id="15_u2rug"]
 
 [node name="world" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_e6siw")

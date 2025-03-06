@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=4 uid="uid://c1footca4mcvt"]
 
 [ext_resource type="PackedScene" uid="uid://dbt5pukp7kt1g" path="res://scenes/biomes/level_template.tscn" id="1_j276r"]
-[ext_resource type="Script" path="res://scripts/breakable_wall.gd" id="2_l8pw1"]
+[ext_resource type="Script" uid="uid://cb1e11xmdqqff" path="res://scripts/breakable_wall.gd" id="2_l8pw1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1ggg"]
 resource_name = "Material"

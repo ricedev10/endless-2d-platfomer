@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dd7ea8px78xy1"]
 
 [ext_resource type="Texture2D" uid="uid://lhvbln2oyubk" path="res://assets/animations/idle/Idle0.png" id="1_rkvql"]
-[ext_resource type="Script" path="res://scripts/player_3d.gd" id="1_t2mn7"]
+[ext_resource type="Script" uid="uid://bo52b55fqg18m" path="res://scripts/player_3d.gd" id="1_t2mn7"]
 [ext_resource type="Texture2D" uid="uid://1l01rjjbla7w" path="res://assets/animations/crouch/Crouch0.png" id="2_d345y"]
 [ext_resource type="Texture2D" uid="uid://crswwvpefe2oe" path="res://assets/animations/idle/Idle1.png" id="2_gw6pa"]
 [ext_resource type="Texture2D" uid="uid://s5l2xsq3tkd5" path="res://assets/animations/run/Run0.png" id="3_frgfs"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bquxxffp17tj3" path="res://assets/animations/run/Run2.png" id="5_dh04h"]
 [ext_resource type="Texture2D" uid="uid://bodi2omdmllnr" path="res://assets/animations/run/Run3.png" id="6_v6ump"]
 [ext_resource type="Texture2D" uid="uid://d1qhcat4sftxc" path="res://assets/animations/slide/Slide0.png" id="12_fy70q"]
-[ext_resource type="Script" path="res://scripts/state.gd" id="13_3cnmf"]
+[ext_resource type="Script" uid="uid://cvjo4lgvi5kqk" path="res://scripts/state.gd" id="13_3cnmf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8jqe"]
 animations = [{
