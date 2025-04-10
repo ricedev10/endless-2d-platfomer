@@ -1,12 +1,16 @@
-extends Control
+extends CanvasLayer
 
-@onready var timer_label: Label = $TimerLabel
+@export var game_scene: PackedScene
 
-
-func host_game() -> void:
-	print("host game pressed")
-	NetworkManager.host_game()
+func start_game() -> void:
+	#NetworkManager.host_game()
 	hide()
+	var new_game = game_scene.instantiate()
+	add_child(new_game)
+	new_game.tree_exited.connect(func(): 
+		show()
+		print("exit tree")
+	)
 	
 func join_game() -> void:
 	print("join game pressed")
@@ -19,7 +23,4 @@ func start_timer() -> void:
 	time_started = Time.get_ticks_msec()
 
 func _process(delta: float) -> void:
-	if timer_label:
-		var time_passed_in_seconds: float = (Time.get_ticks_msec() - time_started) / 1000.0
-		time_passed_in_seconds = floor(time_passed_in_seconds * 100) / 100
-		timer_label.text = "time:  " + str(time_passed_in_seconds)
+	pass

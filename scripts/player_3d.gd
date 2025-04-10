@@ -1,13 +1,17 @@
 class_name Player
 extends CharacterBody3D
 
+## if active, physics/controls apply to character.
+## [br]if not active, character is "frozen"
+@export var active: bool = true
+
 @onready var character_state = $"CharacterState"
 @onready var roof_detector = $"RoofDetector"
 
-const RUN_SPEED = 6.0
-const SLIDE_SPEED = 5.5
+const RUN_SPEED = 8.0
+const SLIDE_SPEED = 7.5
 const JUMP_VELOCITY = 4.0
-const JUMP_SPEED = 5.5
+const JUMP_SPEED = 6.5
 const JUMP_GRAVITY = Vector3(0, -9.8, 0)
 const FALL_GRAVITY = Vector3(0, -30.8, 0)
 
@@ -75,6 +79,9 @@ func _ready() -> void:
 	character_state.state_changed.connect(on_state_changed)
 
 func _physics_process(delta: float) -> void:
+	if not active:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		if velocity.y < 0.0:
@@ -89,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		if not is_sliding:
 			slide_start_y = position.y
 			is_sliding = true
-			slide_start_direction = sign(velocity.x)
+			slide_start_direction = sign(max(velocity.x, 1))
 			if slide_start_direction == 0: 
 				slide_start_direction = Input.get_axis("move_left", "move_right")
 		if Input.is_action_pressed("move_left"):
@@ -100,9 +107,8 @@ func _physics_process(delta: float) -> void:
 		
 		var increase_speed = slide_start_direction * (slide_start_y - position.y) * 50.0
 		var goal = velocity.x
-		print(increase_speed)
 		
-		velocity.x = lerp(SLIDE_SPEED * slide_start_direction, goal + increase_speed, delta * 5.0)
+		velocity.x = lerp(SLIDE_SPEED * slide_start_direction, goal, delta * 5.0)
 		
 		move_and_slide()
 		return
@@ -118,7 +124,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	#input_dir.y = 0.0
-	var direction := (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	var direction := (transform.basis * Vector3(1, 0, 0)).normalized() #(transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	if direction:
 		var speed = JUMP_SPEED if not is_on_floor() else RUN_SPEED
 		velocity.x = direction.x * speed
@@ -144,6 +150,9 @@ func _physics_process(delta: float) -> void:
 		$"AnimatedSprite3D".animation = "jump"
 		character_state.state = character_state.STATES.JUMP
 
+	# see if passed world border
+	if position.y < -20.0:
+		get_parent().queue_free()
 
 
 	move_and_slide()

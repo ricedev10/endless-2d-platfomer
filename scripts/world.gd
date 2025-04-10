@@ -1,22 +1,25 @@
+class_name World
 extends Node3D
 
-@export var load_level_distance = 2 # load _ amount of levels ahead and unload _ levels behind
+@export var load_level_distance = 100 # load _ amount of levels ahead and unload _ levels behind
 @export var start_position = Vector3.ZERO
-@export var player: CharacterBody3D
+@export var player: Player
 @export var current_biome: Biome
 @export var auto_load_levels: bool = false
 @export var noise: FastNoiseLite
+@export var timer_label: Label
 
-@onready var biomes = $"Biomes"
-
+@onready var biomes = $Biomes
 
 var chunk_position: int = 0
+
+var time_started: int
 
 var level_position: int = 0
 
 class RandomSeed:
 	var _random_number_generator: RandomNumberGenerator = RandomNumberGenerator.new()
-	var seed = 0
+	var seed = randi()
 	
 	func get_randi(index: int, from: int, to: int) -> int:
 		_random_number_generator.seed = seed + index
@@ -54,21 +57,45 @@ class LevelLoader:
 		for i in size:
 			i -= behind
 			levels[i] = rng.get_randi(i, min_int, max_int)
-		
+			print(i)
+		print(levels)
 		return levels
 	
-	func load_levels(parent: Object) -> void:
+	func load_levels(parent: Object) -> Vector3:
 		loaded_levels = generate_levels(0)
 		
 		var levels_to_load: int = loaded_levels.size()
 		var end_position: Vector3 = Vector3.ZERO
+		var last_end_position: Vector3
+		print(ahead, behind)
 		for i in levels_to_load:
+			i -= behind 
 			var level: Level = biome.levels[loaded_levels[i]].instantiate()
 			level.name = "Level_" + str(i)
 			level.global_position = end_position - level.start_marker.position
 			end_position += (level.end_marker.position - level.start_marker.position)
 			parent.add_child(level)
-			print(loaded_levels[i])
+			last_end_position = end_position
+		
+		return last_end_position
+	
+	func initiate_end(parent: Object) -> Vector3:
+		#loaded_levels = generate_levels(0)
+		#
+		#var levels_to_load: int = loaded_levels.size()
+		#var end_position: Vector3 = Vector3.ZERO
+		#var last_end_position: Vector3
+		#for i in levels_to_load:
+			#i -= behind 
+			#var level: Level = biome.levels[loaded_levels[i]].instantiate()
+			#level.name = "Level_" + str(i)
+			#level.global_position = end_position - level.start_marker.position
+			#end_position += (level.end_marker.position - level.start_marker.position)
+			#parent.add_child(level)
+			#last_end_position = end_position
+		
+		#return last_end_position
+		return Vector3()
 	
 	func refresh_at(index: int) -> void:
 		var length: int = (index + ahead) - (index - behind)
@@ -102,17 +129,22 @@ class LevelLoader:
 
 var rng = RandomSeed.new()
 var level_loader: LevelLoader
+var level_end_position: Vector3
 
 func initialize_level():
 	select_random_biome()
 	player.position = start_position + Vector3(0.0, 3.0, 0.0)
 	load_levels()
-	level_loader = LevelLoader.new(0, current_biome.levels.size()-1, 0, 40, current_biome)
-	level_loader.load_levels(self)
+	level_loader = LevelLoader.new(0, current_biome.levels.size()-1, -2, load_level_distance, current_biome)
+	level_end_position = level_loader.load_levels(self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initialize_level()
+	await get_tree().create_timer(1.0).timeout
+	player.active = true
+	time_started = Time.get_ticks_msec()
+	print(time_started, "start")
 	
 func select_random_biome() -> void:
 	var max_biomes = biomes.get_child_count()
@@ -148,10 +180,18 @@ func load_levels() -> void:
 		#self.add_child(level)
 	
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var distance_travelled = start_position.x - player.position.x
 	
-	# did player pass current level?
+	# is player getting close to end?
+	if player.position.x > (level_end_position.x - 5.0):
+		print("passed!")
+		level_loader.initiate_end(self)
 	
-	
+	# Timer
+	if timer_label and time_started != 0:
+		var time_passed_in_seconds: float = (Time.get_ticks_msec() - time_started) / 1000.0
+		time_passed_in_seconds = floor(time_passed_in_seconds * 100) / 100
+		timer_label.text = "time:  " + str(time_passed_in_seconds)

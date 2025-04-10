@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du1tw46uon663" path="res://scenes/loading_menu.tscn" id="2_lchfl"]
 
 [node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_f0nxw")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
@@ -13,7 +14,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_f0nxw")
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleLabel" type="Label" parent="MainMenu"]
@@ -66,17 +66,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 text = "Quit"
 
-[node name="TimerLabel" type="Label" parent="MainMenu"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 33.0
-offset_right = 117.0
-offset_bottom = 78.0
-text = "timer"
-
 [node name="LoadingMenu" parent="." instance=ExtResource("2_lchfl")]
 visible = false
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="MainMenu" method="host_game"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="start_game"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Join" to="MainMenu" method="join_game"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/Quit" to="MainMenu" method="quit_game"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Quit" to="." method="quit_game"]
